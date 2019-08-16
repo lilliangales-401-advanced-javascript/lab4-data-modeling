@@ -17,7 +17,12 @@ describe('Categories Model', () => {
                 testRecord[field] = null;
             }
         }
-        expect(categories.sanitize(testRecord)).toBeUndefined();
+        expect(categories.sanitize(testRecord)).toEqual(false);
+    });
+
+    it('validates that the name is the correct data type', () => {
+        console.log(categories.schema)
+        expect(categories.sanitize({id: 1, name: 2,})).toEqual(false);
     });
 
     it('can post() a new category', () => {
@@ -31,6 +36,35 @@ describe('Categories Model', () => {
             .catch(e => console.error('ERR', e));
     });
 
+    it('can delete() a category', () => {
+        let obj = {name: 'Test Category Delete'};
+        console.log('object type', typeof obj.id)
+        return categories.create(obj)
+          .then(createRecord => {
+              return categories.delete(createRecord)
+                .then(record => {
+                    expect(record).toEqual(undefined);
+                })
+                .catch(e => console.error('ERR', e));
+          });
+    });
+
+
+
+    it('can update() a category', () => {
+        let obj = { name: 'Test Category Update' };
+        console.log('object type', typeof obj.id)
+        return categories.create(obj)
+            .then(createRecord => {
+                obj.name = 'Test 2';
+                return categories.update(createRecord._id, obj)
+                    .then(newRecord => {
+                        expect(newRecord.name).toEqual(obj.name);
+                    });
+            }).catch(e => console.error('ERR', e));
+    });
+
+
     it('can get() a category', () => {
         let obj = { name: 'Test Category' };
         return categories.create(obj)
@@ -41,7 +75,9 @@ describe('Categories Model', () => {
                             expect(category[0][key]).toEqual(obj[key]);
                         });
                     });
-            });
+            }).catch(e => console.error('ERR', e));
     });
+
+
 
 });
