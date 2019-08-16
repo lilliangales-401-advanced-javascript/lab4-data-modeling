@@ -40,20 +40,28 @@ class Model {
         // Vinicio - your goal is to change that to check for types as well
         // Please take inspiration from lab 02
 
+
+
         Object.keys(this.schema).forEach(field => {
+
+            if (typeof entry.name !== this.schema.name.type){
+                valid = false;
+            }
+
             if (this.schema[field].required) {
-                if (entry[field]) {
-                    record[field] = entry[field];
-                } else {
-                    valid = false;
-                }
+                    if (entry[field]) {
+                        record[field] = entry[field];
+
+                    } else {
+                        valid = false;
+                    }
             }
             else {
                 record[field] = entry[field];
             }
         });
 
-        return valid ? record : undefined;
+        return valid ? record : false;
     }
 
 }
