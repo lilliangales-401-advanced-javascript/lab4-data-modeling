@@ -2,7 +2,8 @@
 
 const DataModel = require('../file');
 
-class Categories extends DataModel {
+
+class Person extends DataModel {
   constructor() {
     super();
     this.schema = {
@@ -12,14 +13,4 @@ class Categories extends DataModel {
   }
 }
 
-class Products extends DataModel {
-  constructor() {
-    super();
-    this.schema = {
-      id: { required: true, type: 'object'},
-      name: { required: true , type: 'string'},
-    };
-  }
-}
-
-module.exports = Categories;
+module.exports = Person;
