@@ -6,20 +6,21 @@
 
 ### Links and Resources
 * [submission PR](https://github.com/lilliangales-401-advanced-javascript/lab4-data-modeling/pull/4)
-* [travis](http://xyz.com)
-* [back-end](http://xyz.com) (when applicable)
-* [front-end](http://xyz.com) (when applicable)
+* [travis](https://travis-ci.com/lilliangales-401-advanced-javascript/lab4-data-modeling/builds/123618689)
+* [front-end](https://lab4-data-modeling.herokuapp.com/)
 
 #### Documentation
-* [api docs](http://xyz.com) (API servers)
-* [jsdoc](http://xyz.com) (Server assignments)
-* [styleguide](http://xyz.com) (React assignments)
 
 ### Modules
 #### `modulename.js`
 ##### Exported Values and Methods
 
-###### `foo(thing) -> string`
+###### `get() -> promise`
+`create() -> promise`
+`delete() -> promise`
+`update() -> promise`
+`sanitize() -> promise`
+
 Usage Notes or examples
 
 ###### `bar(array) -> array`
@@ -32,10 +33,7 @@ Usage Notes or examples
 
 #### Running the app
 * `npm start`
-* Endpoint: `/foo/bar/`
-  * Returns a JSON object with abc in it.
-* Endpoint: `/bing/zing/`
-  * Returns a JSON object with xyz in it.
+
   
 #### Tests
 * How do you run tests?
@@ -43,4 +41,3 @@ Usage Notes or examples
 * What assertions need to be / should be made?
 
 #### UML
-Link to an image of the UML for your application and response to events
